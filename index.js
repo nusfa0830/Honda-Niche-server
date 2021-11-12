@@ -75,7 +75,7 @@ async function run() {
         // getting my orders
         app.get('/myOrder/:email', async (req, res) => {
             const result = await ordersCollection.find({ email: req.params.email }).toArray();
-            res.send(result);
+            // res.send(result);
             console.log(result)
 
         })
@@ -133,13 +133,13 @@ async function run() {
 
         // delete  orders
         app.delete('/allOrders/:id', async (req, res) => {
-            console.log(req.params.id)
+
             const result = await ordersCollection.deleteOne({ _id: ObjectId(req.params.id) })
             console.log(result);
 
         })
 
-
+        // update status
         app.put("/statusUpdate/:id", async (req, res) => {
 
             console.log(req.params.id);
@@ -150,8 +150,15 @@ async function run() {
                 },
             });
             res.send(result);
-            console.log(result)
+
         });
+        // deleted from manage orders
+        app.delete('/allOrders/:id', async (req, res) => {
+            console.log(req.params.id)
+            const result = await ordersCollection.deleteOne({ _id: ObjectId(req.params.id) })
+
+
+        })
 
 
 
