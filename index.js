@@ -160,9 +160,6 @@ async function run() {
 
         })
 
-
-
-
     } finally {
 
         // await client.close();
@@ -171,8 +168,6 @@ async function run() {
 }
 
 run().catch(console.dir);
-
-
 
 app.get('/', (req, res) => {
     res.send('final project')
